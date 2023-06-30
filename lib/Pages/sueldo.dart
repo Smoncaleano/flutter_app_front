@@ -48,8 +48,8 @@ class Sueldo extends StatelessWidget {
                         onPressed: () {
                           // Actualizar el tipo de parámetro y llamar a getPagos
                           tipoParametro = 'Mayor';
-                          pagosProvider.getPagos(tipoParametro);
-                          pagosProvider.actualizarPagos();
+
+                          pagosProvider.actualizarPagos(tipoParametro);
                         },
                         child: Text('Pagaron'),
                       ),
@@ -60,8 +60,8 @@ class Sueldo extends StatelessWidget {
                         onPressed: () {
                           // Actualizar el tipo de parámetro y llamar a getPagos
                           tipoParametro = 'Menor';
-                          pagosProvider.getPagos(tipoParametro);
-                          pagosProvider.actualizarPagos();
+
+                          pagosProvider.actualizarPagos(tipoParametro);
                         },
                         child: Text('No pagaron'),
                       ),
@@ -70,8 +70,8 @@ class Sueldo extends StatelessWidget {
                 ),
               ),
               FutureBuilder<List<Pagos>>(
-                future: pagosProvider.getPagos(
-                    tipoParametro), // Utilizar el tipo de parámetro actualizado
+                future: pagosProvider
+                    .getPagos(), // Utilizar el tipo de parámetro actualizado
                 builder: (context, AsyncSnapshot<List<Pagos>> snapshot) {
                   if (snapshot.hasData && pagosProvider.estado) {
                     List<Pagos> items = snapshot.data!.toList();

@@ -9,13 +9,16 @@ class PagosProvider extends ChangeNotifier {
 
   List<Pagos> pagos = [];
 
-  Future<List<Pagos>> getPagos(String pagaron) async {
-    List<Pagos> pagoss = await utils.getPagos(pagaron);
+  String tipoParametro = 'Mayor';
+
+  Future<List<Pagos>> getPagos() async {
+    List<Pagos> pagoss = await utils.getPagos(tipoParametro);
     pagos = pagoss;
     return pagoss;
   }
 
-  Future<void> actualizarPagos() async {
+  Future<void> actualizarPagos(String tipo) async {
+    tipoParametro = tipo;
     notifyListeners();
   }
 
